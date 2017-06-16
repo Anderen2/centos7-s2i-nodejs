@@ -13,7 +13,7 @@ for key in \
    B9AE9905FFD7803F25714661B63B535A4C206CA9 \
    56730D5401028683275BD23C23EFEFE93C4CFFFE \
 ; do 
-  gpg -q --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "$key";
+  until gpg -q --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "$key"; do sleep 1; done;
   echo "$key:6" | gpg --import-ownertrust
 done
 
